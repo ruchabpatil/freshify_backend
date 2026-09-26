@@ -1,13 +1,20 @@
+import os
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
 import base64
 import io
-import os
 
 import numpy as np
 import tensorflow as tf
+
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+
+
 from PIL import Image
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-
 
 # --------------------------------------------------
 # Flask application
